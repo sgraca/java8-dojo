@@ -17,93 +17,99 @@ public class FunctionsLab
 	public static Predicate<Person> selectAdultPersonWithLambda()
 	{
 		//TODO: 2.1 Create a predicate which uses a lambda expression to test whether a given person is an adult or not.
-		return p -> true;
+		return p -> p.isAdult();
 	}
 
 	public static Predicate<Person> selectAdultPersonWithMethodReference()
 	{
 		//TODO: 2.2 Same as exercise 1 only now uses a method reference.
-		return p -> true;
+		return Person::isAdult;
 	}
 
 	public static Predicate<Person> selectFemaleOrMinorsWithCombinedPredicates()
 	{
 		//TODO: 2.3 Use the logical operator methods in Predicate to combine predicates.
-		return p -> true;
+		final Predicate<Person> isAdult = Person::isAdult;
+		final Predicate<Person> isMale = Person::isMale;
+		return isAdult.negate().or(isMale.negate());
 	}
 
 	public static Predicate<Person> selectMinorMalePersonWithCombinedPredicates()
 	{
 		//TODO: 2.4 Use the logical operator methods in Predicate to combine new predicates.
-		return p -> true;
+		final Predicate<Person> isAdult = Person::isAdult;
+		final Predicate<Person> isMale = Person::isMale;
+		return isMale.and(isAdult.negate());
 	}
 
 	public static Function<Person, String> convertNameToUppercase()
 	{
 		//TODO: 2.5 Write a function which outputs the name of the person in uppercase.
-		return null;
+		return p -> p.getName().toUpperCase();
 	}
 
 	public static BiFunction<String, String, String> comboString()
 	{
 		//TODO: 2.6 Write a function which takes two strings and returns a String as follows: short+long+short.
-		return null;
+		return (a, b) -> a.length() < b.length() ? a + b + a : b + a + b;
 	}
 
 	public static BiFunction<Integer, Integer, Integer> sum()
 	{
 		//TODO: 2.7 Assign a Lambda to a BiFunction that calculates the sum of the two parameters passed to it
-		return null;
+		return (i, j) -> i + j;
 	}
 
 	public static BiFunction<Integer, Integer, Integer> max()
 	{
 		//TODO: 2.8 Assign a Static Method Reference to a BiFunction that calculates the max of two values.
 		// As method reference the max method of Math.
-		return null;
+		return Math::max;
 	}
 
 	public static Function<Integer, Integer> square()
 	{
 		//TODO: 2.9 write a function which outputs the square.
-		return null;
+		return i -> i * i;
 	}
 
 	public static Function<Integer, String> sumToString()
 	{
 		//TODO: 2.10 Write a composition of two functions, one function which calculates the sum and one which will convert the sum to a String
-		return null;
+		final Function<Integer, Integer> sum = i -> i + i;
+		final Function<Integer, String> toString = Object::toString;
+		return toString.compose(sum);
 	}
 
 	public static Consumer<Person> logWithConsumer()
 	{
 		//TODO: 2.11 Assign a Lambda to a {@link Consumer} that logs a {@link Person}'s toString.
 		final SimpleLogger logger = SimpleLoggerFactory.getLogger(FunctionsLab.class);
-		return null;
+		return p -> logger.info(p);
 	}
 
 	public static Consumer<Person> logWithMethodReference()
 	{
 		//TODO: 2.12 Instruction Assign a Method Reference of the info method of SimpleLogger to a Consumer that logs a Person's toString.
 		final SimpleLogger logger = SimpleLoggerFactory.getLogger(FunctionsLab.class);
-		return null;
+		return logger::info;
 	}
 
 	public static Comparator<Person> sortByName()
 	{
 		//TODO: 2.13 Write an implementation of the comparator function using a lambda expression.
-		return null;
+		return (a, b) -> a.getName().compareTo(b.getName());
 	}
 
 	public static Supplier<String> nameOfPersonWithLambdaSupplier(final Person p)
 	{
 		//TODO: 2.14 Assign a Lambda to a Supplier that returns a Person name.
-		return null;
+		return () -> p.getName();
 	}
 
 	public static Supplier<String> nameOfPersonWithMethodReferenceSupplier(final Person p)
 	{
 		//TODO: 2.15 Assign a method reference to a Supplier that returns a Person name
-		return null;
+		return p::getName;
 	}
 }
