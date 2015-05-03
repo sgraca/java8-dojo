@@ -43,7 +43,7 @@ public class PhoneCoderTest
 	{
 		final List<String> words = Arrays.asList("Java");
 		final Map<String, List<String>> map = PhoneCoder.distributeWords(words);
-		assertTrue(map.get("5282").contains("JAVA"));
+		assertTrue(map.get("5282").contains("Java"));
 	}
 
 	@Test
@@ -52,7 +52,7 @@ public class PhoneCoderTest
 		final List<String> words = Arrays.asList("Java");
 		final PhoneCoder phoneCoder = new PhoneCoder(words);
 		final List<String> result = phoneCoder.translate("5282");
-		assertTrue(result.contains("JAVA"));
+		assertTrue(result.contains("Java"));
 	}
 
 }
