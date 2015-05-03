@@ -17,10 +17,10 @@ public class IntermediateCollectionsLab
 {
 	public static Collector<Person, StringJoiner, String> personToString()
 	{
-		//TODO: 4.1 Implement the method personToString which requires you to write a new collector which prints out the name(uppercase) and the gender and age as a comma separated string.
+		//TODO: 4.1 Implement the method personToString which requires you to write a new collector which prints out the name and the gender as a comma separated string.
 		//
 		// Example:
-		// Person p = new Person("Frank", 32, true) should create: (FRANK -> M),
+		// Person p = new Person("Frank", 32, true) should create: (Frank -> M),
 		//
 		// Hint: Look at the method signature of Collector#of(java.util.function.Supplier, java.util.function.BiConsumer, java.util.function.BinaryOperator, java.util.stream.Collector.Characteristics...)}
 		return null;
