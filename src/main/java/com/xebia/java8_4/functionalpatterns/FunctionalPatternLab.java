@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.xebia.domain.Person;
@@ -64,7 +65,17 @@ public class FunctionalPatternLab
 			{
 				//TODO: 6.1 Implement FunctionalPersonFilter.filterPersonsFunctionalImpl in a functional style using the same processing logic as in the PersonFilterTemplate.filterPersonsImperativeImpl
 				// Hint: use BufferedReader.lines() as a starting point to the Stream API. As you can see not only Collections return Streams but BufferedReader too.
-				return null;
+				try (BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream())))
+				{
+					return br.lines()
+							.map(PersonParser::parse)
+							.filter(this::doFilterPerson)
+							.collect(Collectors.toList());
+				}
+				catch (final IOException e)
+				{
+					throw new RuntimeException(e);
+				}
 			}
 
 			protected abstract boolean doFilterPerson(Person person);
@@ -96,7 +107,17 @@ public class FunctionalPatternLab
 				// In this functional implementation the filtering logic can directly be defined as a Predicate without
 				// the need to implement an abstract method like in the PersonFilterTemplate example.
 				// Hint: Most of the processing logic written in exercise 1 (see above) can be re-used.
-				return null;
+				try (BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream())))
+				{
+					return br.lines()
+							.map(PersonParser::parse)
+							.filter(p -> p.getRole() == Role.PROGRAMMER)
+							.collect(Collectors.toList());
+				}
+				catch (final IOException e)
+				{
+					throw new RuntimeException(e);
+				}
 			}
 
 		}
