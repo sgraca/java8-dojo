@@ -54,7 +54,7 @@ public class IntermediateCollectionsLabTest
 		final Person p1 = new Person("Anna", 32, false);
 		final Person p2 = new Person("Peter", 21, true);
 		final List<Person> persons = asList(p1, p2);
-		assertThat(persons.stream().collect(personToString()), equalTo("(Anna -> V),(Peter -> M)"));
+		assertThat(persons.stream().collect(personToString()), equalTo("(Anna -> F),(Peter -> M)"));
 	}
 
 	@Test
