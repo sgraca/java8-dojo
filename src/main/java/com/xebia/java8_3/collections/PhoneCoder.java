@@ -1,9 +1,9 @@
 package com.xebia.java8_3.collections;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 // In this lab we will construct part of the Phone code benchmark link.
 // The original task is more difficult but in this lab you will learn a lot more about String,
@@ -49,13 +49,16 @@ public class PhoneCoder
 		//
 		// Tip use the String method chars().
 		final Map<Character, Character> charCodes = new HashMap<>();
+		mnemonics.forEach((c, s) -> s.chars().forEach(m -> charCodes.put((char)m, c)));
 		return charCodes;
 	}
 
 	public static String getNumberFrom(final String word)
 	{
 		//TODO: 5.2 This method should translate a given word into a number, for example 'Java' should return 5282.
-		return word;
+		return word.toUpperCase().chars()
+				.mapToObj(c -> CHAR_TO_DIGIT.get((char) c).toString())
+				.collect(Collectors.joining());
 	}
 
 	public static Map<String, List<String>> distributeWords(final List<String> words)
@@ -63,12 +66,13 @@ public class PhoneCoder
 		//TODO: 5.3 This method takes a list of words as input and as a result creates a map from number to the word.
 		// So for example if you take Java, Lava as your words the method should return a map which contains:
 		// 5282 --> [ Java, Lava ]
-		return null;
+		return words.stream()
+				.collect(Collectors.groupingBy(PhoneCoder::getNumberFrom));
 	}
 
 	public List<String> translate(final String number)
 	{
 		//TODO: 5.4 Implement the method translate which will return the words based on the given number.
-		return Arrays.asList(number);
+		return numbers.get(number);
 	}
 }
