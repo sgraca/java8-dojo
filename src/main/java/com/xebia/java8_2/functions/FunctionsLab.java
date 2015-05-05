@@ -109,7 +109,7 @@ public class FunctionsLab
 
 	public static Supplier<String> nameOfPersonWithMethodReferenceSupplier(final Person p)
 	{
-		//TODO: 2.15 Assign a method reference to a Supplier that returns a Person name
+		//TODO: 2.15 Assign a method reference to a Supplier that returns a Person name.
 		return p::getName;
 	}
 }
