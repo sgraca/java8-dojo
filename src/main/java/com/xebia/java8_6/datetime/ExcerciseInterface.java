@@ -1,4 +1,4 @@
-package com.xebia.java8_5.datetime;
+package com.xebia.java8_6.datetime;
 
 import java.time.Duration;
 import java.time.LocalDate;

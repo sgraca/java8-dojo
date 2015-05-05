@@ -9,10 +9,6 @@ import java.util.HashSet;
 
 import org.junit.Test;
 
-import com.xebia.java8_5.datetime.Attempt;
-import com.xebia.java8_5.datetime.ExcerciseInterface;
-import com.xebia.java8_5.datetime.Solution;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
