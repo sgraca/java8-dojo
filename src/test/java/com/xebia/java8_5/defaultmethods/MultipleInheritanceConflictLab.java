@@ -25,16 +25,10 @@ public class MultipleInheritanceConflictLab
 
 	// TODO: 7.1 Add declaration to implement Car and Plane interfaces.
 	// It doesn't compile - look at the error message.
-	public class FlyingCar implements Car, Plane
+	public class FlyingCar
 	{
 		// TODO: 7.2 Fix the compilation error by writing startEngine() method which resolves the conflict.
 		// Make the FlyingCar sound like Plane by delegating call to startEngine() method of Plane.
-
-		@Override
-		public String startEngine()
-		{
-			return Plane.super.startEngine();
-		}
 	}
 
 
@@ -47,7 +41,7 @@ public class MultipleInheritanceConflictLab
 
 		// when
 		// TODO: 7.3 Uncomment and run test - it should pass
-		sound = flyingCar.startEngine();
+//		sound = flyingCar.startEngine();
 
 		// then
 		assertEquals("Wrrrrrrr", sound);
